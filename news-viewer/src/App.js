@@ -6,7 +6,7 @@ const App = () => {
   const onClick = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos/1"
+        "https://newsapi.org/v2/everything?q=bitcoin&from=2019-12-26&sortBy=publishedAt&apiKey=4e2a7626d7c848d4b7df25f763244334"
       );
       setData(response.data);
     } catch (e) {
