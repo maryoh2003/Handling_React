@@ -1,32 +1,9 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useCallback } from "react";
+import { Route } from "react-router-dom";
+import NewsPage from "./pages/NewsPage";
 
 const App = () => {
-  const [data, setData] = useState(null);
-  const onClick = async () => {
-    try {
-      const response = await axios.get(
-        "https://newsapi.org/v2/everything?q=bitcoin&from=2019-12-26&sortBy=publishedAt&apiKey=4e2a7626d7c848d4b7df25f763244334"
-      );
-      setData(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  return (
-    <div>
-      <div>
-        <button onClick={onClick}>불러오기</button>
-      </div>
-      {data && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(data, null, 2)}
-          readOnly={true}
-        />
-      )}
-    </div>
-  );
+  return <Route path="/:category?" component={NewsPage} />; //뒤에 있는 ? == (optional) 있을 수도, 없을 수도 있다는 뜻
 };
 
 export default App;
